@@ -23,5 +23,9 @@ printfn $"Day 5, Part1: %i{Day5.Part1.countOfTwoOverlaps day5Data}"
 printfn $"Day 5, Part1: %i{Day5.Part2.countOfTwoOverlaps day5Data}"
 
 let day6Data = File.readAndMapFile "Day6.txt" (fun s -> s.Split(',') |> Array.map Int32.Parse |> Array.toList) |> List.collect id
-printfn $"Day 6, Part1: %i{Day6.Part1.simulateFishFor 80 day6Data}"
-printfn $"Day 6, Part2: %i{Day6.Part1.simulateFishFor 256 day6Data}"
+printfn $"Day 6, Part1: %i{Day6.Part1And2.simulateFishFor 80 day6Data}"
+printfn $"Day 6, Part2: %i{Day6.Part1And2.simulateFishFor 256 day6Data}"
+
+let day7Data = File.readAndMapFile "Day7.txt" (fun s -> s.Split(',') |> Array.map Int32.Parse |> Array.toList) |> List.collect id
+printfn $"Day 7, Part1: %i{Day7.Part1.calculateFuelCost day7Data}"
+printfn $"Day 7, Part2: %i{Day7.Part2.calculateFuelCost day7Data}"
