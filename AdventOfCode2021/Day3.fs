@@ -17,7 +17,7 @@ module Part1 =
         let sortFn = match mostOrLeast with Least -> List.sortByDescending | Most -> List.sortBy
         
         input
-        |> List.map (fun s -> s.[index])
+        |> List.map (fun s -> s[index])
         |> List.groupBy id
         |> List.map snd
         |> sortFn (fun l -> l.Length)
@@ -42,7 +42,7 @@ module Part2 =
     let private calculateCommonBit (mostOrLeast : MostLeast) (index: int) (input: string list) =
         let grouping = 
             input
-            |> List.map (fun s -> s.[index])
+            |> List.map (fun s -> s[index])
             |> List.groupBy id
             |> List.sortByDescending (fun (_, l) -> l.Length)
             
@@ -68,7 +68,7 @@ module Part2 =
                 | _ ->
                     let common = calculateCommonBit mostOrLeast idx acc
                     
-                    let remainder = acc |> List.filter (fun s -> s.[idx] = common)
+                    let remainder = acc |> List.filter (fun s -> s[idx] = common)
                     loop remainder (idx + 1)
                     
             loop input 0

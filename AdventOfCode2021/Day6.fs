@@ -13,12 +13,12 @@ module Part1And2 =
         resets @ decrements @ newFishes
     
     let private calculateNextGenerationFast (input : Dictionary<int, int64>) =
-        let newCount = input.[0]
+        let newCount = input[0]
         for i = 1 to 8 do
-            input.[i - 1] <- input.[i]
+            input[i - 1] <- input[i]
             
-        input.[6] <- input.[6] + newCount
-        input.[8] <- newCount
+        input[6] <- input[6] + newCount
+        input[8] <- newCount
     
     let simulateFishFor (days : int) (input : int list) =
         let generations = [ for i = 0 to 8 do

@@ -10,13 +10,13 @@ type Board =
     { Values: BoardNumber array array }
     with member this.Column idx =
             [| for i = 0 to this.Values.Length - 1 do
-                  this.Values.[i].[idx] |]
+                  this.Values[i][idx] |]
         
          member this.Row idx =
-             this.Values.[idx]
+             this.Values[idx]
              
          member this.ColumnLength with get() =
-             this.Values.[0].Length
+             this.Values[0].Length
              
          member this.RowLength with get() =
              this.Values.Length
@@ -24,14 +24,14 @@ type Board =
          member this.DrawValue value =
             for r = 0 to this.RowLength - 1 do
                 for c = 0 to this.ColumnLength - 1 do
-                    let cell = this.Values.[r].[c]
+                    let cell = this.Values[r][c]
                     if cell.Value = value then
-                        this.Values.[r].[c] <- { cell with Drawn = true }
+                        this.Values[r][c] <- { cell with Drawn = true }
 
 let convertToBoard (input : int array array) =
     let numbers = 
         [| for i = 0 to input.Length - 1 do
-               input.[i] |> Array.map (fun n -> { Value = n; Drawn = false }) |]
+               input[i] |> Array.map (fun n -> { Value = n; Drawn = false }) |]
     { Values = numbers }
     
 
