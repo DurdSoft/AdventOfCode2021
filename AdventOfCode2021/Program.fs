@@ -37,3 +37,7 @@ printfn $"Day 8, Part2: %i{Day8.Part2.calculateCount day8Data}"
 let day9Data = File.readAndMapFile "Day9.txt" id |> Day9.mapFile
 printfn $"Day 9, Part1: %i{Day9.Part1.calculateRiskLevel day9Data}"
 printfn $"Day 9, Part2: %i{Day9.Part2.calculate3LargestBasins day9Data}"
+
+let day10Data = File.readAndMapFile "Day10.txt" Day10.processRow
+printfn $"Day 10, Part1: %i{Day10.Part1.calculateSyntaxErrorCost day10Data}"
+printfn $"Day 10, Part2: %i{Day10.Part2.calculateIncompleteCost day10Data}"
