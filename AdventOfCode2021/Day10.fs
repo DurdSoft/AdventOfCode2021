@@ -9,12 +9,12 @@ type SystemChar =
 
 let private openingChars = [ '['; '('; '{'; '<' ]
 
+let private charMap = [ ('(', ')'); ('[', ']'); ('{', '}'); ('<', '>'); ] |> readOnlyDict
+
 let processRow (input : string) =
     input
     |> Seq.map (fun c -> if openingChars |> List.contains c then OpeningChar c else ClosingChar c)
     |> Seq.toList
-
-let private charMap = [ ('(', ')'); ('[', ']'); ('{', '}'); ('<', '>'); ] |> readOnlyDict
 
 let private tryFindIllegalCharacter (input : SystemChar list) =
     let opening = Stack<char>()
@@ -44,13 +44,13 @@ module Part1 =
     
     let calculateSyntaxErrorCost (input : SystemChar list list) =
         input
-        |> List.map tryFindIllegalCharacter
-        |> List.map (fun x -> match x with Ok c -> Some c | Error _ -> None)
-        |> List.choose id
+        |> Seq.map tryFindIllegalCharacter 
+        |> Seq.choose (fun x -> match x with Ok c -> Some c | Error _ -> None)
+        |> Seq.toList
         |> List.groupBy id
-        |> List.map snd
-        |> List.map (fun chars -> chars.Length * syntaxCost[chars |> List.head])
-        |> List.sum
+        |> Seq.map snd
+        |> Seq.map (fun chars -> chars.Length * syntaxCost[chars |> List.head])
+        |> Seq.sum
 
 [<RequireQualifiedAccess>]
 module Part2 =
@@ -59,16 +59,15 @@ module Part2 =
     
     let private calculateIncompleteCostForLine (stack : Stack<_>) =
         stack
-        |> Seq.toList
-        |> List.fold (fun s t -> 5L * s + (syntaxCost[charMap[t]])) 0L
+        |> Seq.fold (fun s t -> 5L * s + (syntaxCost[charMap[t]])) 0L
     
     let calculateIncompleteCost (input : SystemChar list list) =
         let scores = 
-            input
-            |> List.map (fun l -> match tryFindIllegalCharacter l with Ok _ -> None | Error stack -> Some stack)
-            |> List.choose id
-            |> List.map calculateIncompleteCostForLine
-            |> List.sort
+            input 
+            |> Seq.choose (fun l -> match tryFindIllegalCharacter l with Ok _ -> None | Error stack -> Some stack)
+            |> Seq.map calculateIncompleteCostForLine
+            |> Seq.sort
+            |> Seq.toList
             
         scores |> List.item (scores.Length / 2)
 

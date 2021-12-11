@@ -19,7 +19,6 @@ let mapFile (content : string list) =
             matrix[x,y] <- contents[x][y]
             
     matrix
-     
 
 [<RequireQualifiedAccess>]
 module Part1 =

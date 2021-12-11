@@ -24,22 +24,22 @@ let private createLine (includeDiagonal : bool) (direction : Direction) =
     let line = 
         match direction with
         | d when d.X1 = d.X2 ->
-            let startP = Math.Min(d.Y1, d.Y2)
-            let endP = Math.Max(d.Y1, d.Y2)
+            let startP = min d.Y1 d.Y2
+            let endP = max d.Y1 d.Y2
             
             [ for i = startP to endP do (d.X1, i) ]
         | d when d.Y1 = d.Y2 ->
-            let startP = Math.Min(d.X1, d.X2)
-            let endP = Math.Max(d.X1, d.X2)
+            let startP = min d.X1 d.X2
+            let endP = max d.X1 d.X2
             
             [ for i = startP to endP do (i, d.Y1) ]
         | _ when not includeDiagonal ->
             []
         | d ->
-            let startX = Math.Min(d.X1, d.X2)
-            let startY = Math.Min(d.Y1, d.Y2)
-            let endX = Math.Max(d.X1, d.X2)
-            let endY = Math.Max(d.Y1, d.Y2)
+            let startX = min d.X1 d.X2
+            let startY = min d.Y1 d.Y2
+            let endX = max d.X1 d.X2
+            let endY = max d.Y1 d.Y2
             
             let xRange = [ for x = startX to endX do x ]
             let yRange = [ for y = startY to endY do y ]

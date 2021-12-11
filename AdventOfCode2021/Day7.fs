@@ -11,7 +11,7 @@ module Part1 =
         
         for position in allPositions do
             let result = input
-                         |> List.map (fun i -> Math.Abs(i - position))
+                         |> List.map (fun i -> i - position |> abs)
                          |> List.sum
             if result < bestResult then bestResult <- result
         
@@ -27,8 +27,8 @@ module Part2 =
         for position in allPositions do
             let result = input
                          |> List.map (fun i ->
-                             let start = Math.Min (i, position)
-                             let end' = Math.Max (i, position)
+                             let start = min i position
+                             let end' = max i position
                              let mutable sum = 0
                              for x = start to end' do
                                  sum <- sum + (x - start)
