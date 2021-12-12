@@ -45,3 +45,7 @@ printfn $"Day 10, Part2: %i{Day10.Part2.calculateIncompleteCost day10Data}"
 let day11Data = File.readAndMapFile "Day11.txt" id |> Day11.mapFile
 printfn $"Day 11, Part1: %i{Day11.Part1.calculateNumberOfFlashes 100 day11Data}"
 printfn $"Day 11, Part2: %i{Day11.Part2.findFirstGenerationSync day11Data}"
+
+let day12Data = File.readAndMapFile "Day12.txt" id |> Day12.buildAdjacency
+printfn $"Day 12, Part1: %i{Day12.Part1.calculateNumberOfPaths day12Data}"
+printfn $"Day 12, Part2: %i{Day12.Part2.calculateNumberOfPaths day12Data}"

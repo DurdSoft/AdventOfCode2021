@@ -43,9 +43,10 @@ let private simulateStep (state : int[,]) =
         
         if state[x, y] > 9 && flashedThisGeneration.Contains(x,y) |> not then
             flashedThisGeneration.Add(x, y) |> ignore
+            
             let adjacent =
                 adjacentPositions x y
-                |> Array.filter (fun p -> flashedThisGeneration.Contains(p) |> not)
+                |> Array.filter (flashedThisGeneration.Contains >> not)
                 
             for pos in adjacent do
                 loop pos
