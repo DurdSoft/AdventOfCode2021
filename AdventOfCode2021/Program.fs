@@ -49,3 +49,7 @@ printfn $"Day 11, Part2: %i{Day11.Part2.findFirstGenerationSync day11Data}"
 let day12Data = File.readAndMapFile "Day12.txt" id |> Day12.buildAdjacency
 printfn $"Day 12, Part1: %i{Day12.Part1.calculateNumberOfPaths day12Data}"
 printfn $"Day 12, Part2: %i{Day12.Part2.calculateNumberOfPaths day12Data}"
+
+let points, folds = System.IO.File.ReadAllLines "Day13.txt" |> Day13.processInputData
+printfn $"Day 13, Part1: %i{Day13.Part1.calculateVisibleDots points folds}"
+printfn "Day 13, Part2:"; Day13.Part2.calculateCharactersAndPrint points folds
