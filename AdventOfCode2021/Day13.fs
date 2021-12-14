@@ -1,7 +1,6 @@
 module AdventOfCode2021.Day13
 
 open System
-open System.Collections.Generic
 open System.Text.RegularExpressions
 
 type Fold =

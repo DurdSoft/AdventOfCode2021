@@ -53,3 +53,7 @@ printfn $"Day 12, Part2: %i{Day12.Part2.calculateNumberOfPaths day12Data}"
 let points, folds = System.IO.File.ReadAllLines "Day13.txt" |> Day13.processInputData
 printfn $"Day 13, Part1: %i{Day13.Part1.calculateVisibleDots points folds}"
 printfn "Day 13, Part2:"; Day13.Part2.calculateCharactersAndPrint points folds
+
+let templates, instructions = System.IO.File.ReadAllLines "Day14.txt" |> Day14.processInputData
+printfn $"Day 14, Part1: %i{Day14.Part2.findElementCountFast 10 templates instructions}"
+printfn $"Day 14, Part2: %i{Day14.Part2.findElementCountFast 40 templates instructions}"
