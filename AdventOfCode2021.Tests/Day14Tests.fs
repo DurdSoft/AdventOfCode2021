@@ -32,7 +32,7 @@ let ``Day 14, Part 1 works for sample``() =
     
     let count = Part2.findElementCountFast 10 template insertions
     
-    Assert.Equal(1588L, count)
+    Assert.Equal(1588UL, count)
     
 
 [<Fact>]
@@ -41,5 +41,5 @@ let ``Day 14, Part 2 works for sample``() =
     
     let count = Part2.findElementCountFast 40 template insertions
     
-    Assert.Equal(2188189693529L, count)
+    Assert.Equal(2188189693529UL, count)
     
