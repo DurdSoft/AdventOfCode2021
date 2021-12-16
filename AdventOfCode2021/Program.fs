@@ -66,3 +66,7 @@ printfn $"[{elapsed()}] Day 14, Part 2: %i{Day14.Part2.findElementCountFast 40 t
 let costLookup = System.IO.File.ReadAllLines "Day15.txt" |> Day15.processData
 printfn $"[{elapsed()}] Day 15, Part 1: %i{Day15.Part1.findPathCost costLookup}"
 printfn $"[{elapsed()}] Day 15, Part 2: %i{Day15.Part2.findPathCost costLookup}"
+
+let hexString = System.IO.File.ReadAllText "Day16.txt"
+printfn $"[{elapsed()}] Day 16, Part 1: %i{Day16.Part1.calculateVersionSum hexString}"
+printfn $"[{elapsed()}] Day 16, Part 2: %i{Day16.Part2.evaluate hexString}"
